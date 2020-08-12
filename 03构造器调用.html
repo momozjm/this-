@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 通常情况下，构造器里的this指向new 的这个对象
+    var name = '呵呵'
+    var myClass = function() {
+        this.name = '哈哈'
+        this.fun = function() {
+            console.log(this.name)
+        }
+    }
+    var obj = new myClass()
+    var fun = obj.fun
+    console.log(obj.name) // 哈哈
+    obj.fun() // 哈哈  作为对象调用
+    fun() // 呵呵  
+
+
+    // 如果构造器显示的返回了一个Object类型的对象，那么此次运算结果就会返回这个对象，而不是this
+    var myClass2 = function() {
+        this.name = '呵呵2'
+        return {
+            name: '哈哈2'
+        }
+    }
+    var obj2 = new myClass2()
+    console.log(obj2.name) // 哈哈2
+
+    // 基本的数据类型：字符串、数字、布尔、数组、Object、Null、Undefined。
+    // 函数属于Object数据类型。
+    // 数组属于对象，因为 new Array()
+    var myClass3 = function() {
+        this.name = '呵呵3'
+        return function() {
+            console.log(this.name)
+        }
+    }
+    var obj3 = new myClass3()
+    obj3() // 呵呵
+
+    // 如果不返回，或者返回了一个非对象类型的数据，就不会出现上述问题
+    // 数字、字符串、布尔、undefined、null
+    // null属于对象，但是null表示准备用来保存对象，还没有真正保存对象的值
+    // ypeof null返回“object”是一个历史错误（JS的发明者Brendan Eich自己也是这样说的），只是因为要保持语言的兼容性而维持至今
+    var myClass4 = function() {
+        this.name = '呵呵4'
+        // return '嘎嘎'
+        // return 1223
+        // return true
+        // return undefined
+        return null
+    }
+    var obj4 = new myClass4()
+    console.log(obj4.name)
+</script>
+</html>

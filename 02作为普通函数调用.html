@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 当函数不作为对象的属性调用时，也就是我们常说的普通函数调用，此时的this总是指向全局对象！！。
+    var name = '呵呵'
+    var getName = function() {
+        console.log(this.name)
+    }
+    getName() // 呵呵
+
+
+    var name2 = '呵呵2'
+    var obj = {
+        name: '哈哈',
+        getName: function() {
+            console.log(this.name)
+        }
+    }
+    var fun = obj.getName
+    fun() // 呵呵
+    obj.getName() // 哈哈
+</script>
+</html>
