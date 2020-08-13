@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    Function.prototype.myBind = function(context) {
+        // 请在这里把this的指向指给传进来的参数，并返回一个函数 
+        var self = this
+        return function() {
+           self.apply(context)
+        }
+    }
+
+    var obj = {
+        name: 'obj'
+    }
+    var fun = function() {
+        console.log(this.name)
+    }
+    fun.myBind(obj)()
+    
+</script>
+</html>

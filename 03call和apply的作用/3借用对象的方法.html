@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var A = function (name) {
+        this.name = name;
+    };
+    var B = function () {
+        // A的this指向了B
+       A.apply(this, arguments)
+    };
+    B.prototype.getName = function () {
+        return this.name;
+    };
+    var b = new B('sven');
+    console.log(b.getName()); // 输出： 'sven'
+</script>
+
+</html>

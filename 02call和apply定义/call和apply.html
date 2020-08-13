@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // apply和call作用一模一样，区别仅在于传入参数形式的不同
+    // 如果我们传入的第一个参数为 null，函数体内的 this 会指向默认的宿主对象，在浏览器中则是 window：
+    var fun = function (a, b) {
+        console.log(a, b, this.name)
+    }
+    fun.apply(null, [1, 2]) // 1, 2, ''
+    fun.call(null, 1, 2)    // 1, 2, ''
+
+    var obj = {
+        name: '啊'
+    }
+    fun.apply(obj, [1, 2]) // 1, 2, 啊
+    fun.call(obj, 1, 2)    // 1, 2, 啊
+</script>
+
+</html>
