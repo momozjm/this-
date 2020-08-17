@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var fun = function() {
+        var i = 1;
+        return function() {
+            i++
+            console.log(i)
+        }
+    }
+    var a = new fun()() // 2
+    var b = new fun()() // 2
+    var f = new fun() // 当执行 var f = func();时，f 返回了一个匿名函数的引用，它可以访问到 func()被调用时产生的环境，而局部变量 a 一直处在这个环境里
+    f() // 2
+    f() // 3
+</script>
+</html>
